@@ -1,9 +1,7 @@
 import unittest
 
-from text_node import TextNode, TextType
-from functions.split_nodes_delimiter import split_nodes_delimiter
-from html_leaf_node import HTMLLeafNode
-
+from src.classes.text_node import TextNode, TextType
+from src.functions.split_nodes_delimiter import split_nodes_delimiter
 
 class TestTextNode(unittest.TestCase):
     def test_eq(self):

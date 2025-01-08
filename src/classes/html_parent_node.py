@@ -1,4 +1,4 @@
-from htmlnode import HTMLNode
+from src.classes.htmlnode import HTMLNode
 
 class HTMLParentNode(HTMLNode):
     def __init__(self, tag, children, props=None):

@@ -1,4 +1,4 @@
-from text_node import TextNode, TextType
+from src.classes.text_node import TextNode, TextType
 from enum import Enum
 import re
 

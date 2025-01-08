@@ -1,6 +1,6 @@
 import unittest
 
-from functions.extract_markdown_links import extract_markdown_links
+from src.functions.extract_markdown_links import extract_markdown_links
 
 
 class TestTextNode(unittest.TestCase):

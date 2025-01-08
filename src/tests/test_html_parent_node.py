@@ -1,7 +1,7 @@
 import unittest
 
-from html_parent_node import HTMLParentNode
-from html_leaf_node import HTMLLeafNode
+from src.classes.html_parent_node import HTMLParentNode
+from src.classes.html_leaf_node import HTMLLeafNode
 
 
 
