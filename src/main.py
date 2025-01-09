@@ -1,12 +1,24 @@
-from functions.extract_markdown_images import extract_markdown_images
-from functions.extract_markdown_links import extract_markdown_links
+from functions.split_nodes_link import split_nodes_link
+from functions.split_nodes_images import split_nodes_images
+from classes.text_node import TextNode, TextType
 
 def main():
     
-    images_text = "This is text with a ![rick roll](https://i.imgur.com/aKaOqIh.gif) and ![obi wan](https://i.imgur.com/fJRm4Vk.jpeg)"
-    print(extract_markdown_images(images_text))
+    node_with_links = TextNode(
+        "This is text with a link [to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)",
+        TextType.NORMAL,
+    )
+    new_nodes = split_nodes_link([node_with_links])
 
-    links_text = "This is text with a link [to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)"
-    print(extract_markdown_links(links_text))
+    print(new_nodes)
+
+    node_with_images = TextNode(
+        "This is text with an image ![alt text](https://www.boot.dev/image.png)",
+        TextType.NORMAL,
+    )
+
+    new_nodes = split_nodes_images([node_with_images])
+
+    print(new_nodes)
 
 main()
