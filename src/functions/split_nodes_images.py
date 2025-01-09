@@ -9,22 +9,22 @@ def split_nodes_images(old_nodes):
         md_images = extract_markdown_images(node_text)
 
         if len(md_images) == 0:
-            new_nodes.append(TextNode(node_text, TextType.NORMAL))
+            new_nodes.append(TextNode(node_text, node.text_type, node.url))
             continue
 
-        for md_link in md_images:
+        for md_image in md_images:
 
-            if(len(md_link) == 0):
+            if(len(md_image) == 0):
                 continue
             
-            text_before_link = node_text.split(f"[{md_link[0]}]")[0]
+            text_before_link = node_text.split(f"[{md_image[0]}]")[0]
 
-            new_nodes.append(TextNode(text_before_link, TextType.NORMAL))
-            new_nodes.append(TextNode(md_link[0], TextType.LINK, md_link[1]))
+            new_nodes.append(TextNode(text_before_link, node.text_type, node.url))
+            new_nodes.append(TextNode(md_image[0], TextType.IMAGE.value, md_image[1]))
 
-            node_text = node_text.replace(f"[{md_link[0]}]({md_link[1]})", '')
+            node_text = node_text.replace(f"[{md_image[0]}]({md_image[1]})", '')
             node_text = node_text.replace(f"{text_before_link}", '')
 
-        new_nodes.append(TextNode(node_text, TextType.NORMAL))
+        new_nodes.append(TextNode(node_text, node.text_type, node.url))
 
     return new_nodes

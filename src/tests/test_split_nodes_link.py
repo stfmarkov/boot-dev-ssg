@@ -8,7 +8,7 @@ class TestSplitNodesLink(unittest.TestCase):
 
         base_case = TextNode(
             "This is text with a link [to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)",
-            TextType.NORMAL,
+            TextType.NORMAL.value,
         )
         new_nodes = split_nodes_link([base_case])
 
@@ -28,7 +28,7 @@ class TestSplitNodesLink(unittest.TestCase):
 
         no_links = TextNode(
             "This is text with no links",
-            TextType.NORMAL,
+            TextType.NORMAL.value,
         )
 
         new_nodes = split_nodes_link([no_links])
@@ -38,7 +38,7 @@ class TestSplitNodesLink(unittest.TestCase):
 
         no_anchor_text = TextNode(
             "This is text with a link [](https://www.boot.dev)",
-            TextType.NORMAL,
+            TextType.NORMAL.value,
         )
 
         new_nodes = split_nodes_link([no_anchor_text])

@@ -24,9 +24,8 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
     for node in old_nodes:
         if delimiter in node.text:
             text_parts = node.text.split(delimiter)
-            print(text_parts)
             for text_part in text_parts:
-                type = TextType.NORMAL
+                type = TextType.NORMAL.value
                 is_inner_tag = check_inner_tag(text_part, delimiter, node.text)
                 if is_inner_tag:
                     type = text_type

@@ -8,12 +8,12 @@ from src.classes.html_leaf_node import HTMLLeafNode
 class TestTextNode(unittest.TestCase):
     def test_eq(self):
 
-        normal_node = TextNode("This is a text node", TextType.NORMAL)
-        bold_node = TextNode("This is a text node", TextType.BOLD)
-        italic_node = TextNode("This is a text node", TextType.ITALIC)
-        code_node = TextNode("This is a text node", TextType.CODE)
-        link_node = TextNode("This is a text node", TextType.LINK, "https://www.example.com")
-        image_node = TextNode("This is a text node", TextType.IMAGE, "https://www.example.com")
+        normal_node = TextNode("This is a text node", TextType.NORMAL.value)
+        bold_node = TextNode("This is a text node", TextType.BOLD.value)
+        italic_node = TextNode("This is a text node", TextType.ITALIC.value)
+        code_node = TextNode("This is a text node", TextType.CODE.value)
+        link_node = TextNode("This is a text node", TextType.LINK.value, "https://www.example.com")
+        image_node = TextNode("This is a text node", TextType.IMAGE.value, "https://www.example.com")
 
         normal_leaf = HTMLLeafNode(None, "This is a text node")
         bold_leaf = HTMLLeafNode('b', "This is a text node")

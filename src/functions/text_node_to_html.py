@@ -2,8 +2,6 @@ from src.classes.text_node import TextType
 from src.classes.html_leaf_node import HTMLLeafNode
 
 def text_node_to_html(text_node):
-    print(text_node)
-
     if(text_node.text_type == TextType.NORMAL.value):
         return HTMLLeafNode(None, text_node.text)
     elif(text_node.text_type == TextType.BOLD.value):

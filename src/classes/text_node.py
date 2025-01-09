@@ -13,9 +13,9 @@ class TextNode:
         self.text = text
         self.url = url
 
-        if text_type.value not in [item.value for item in TextType]:
+        if text_type not in [item.value for item in TextType]:
             raise ValueError('Invalid text type')
-        self.text_type = text_type.value
+        self.text_type = text_type
 
     def __eq__(self, other):
         return self.text == other.text and self.text_type == other.text_type and self.url == other.url
