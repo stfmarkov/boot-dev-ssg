@@ -12,7 +12,7 @@ class TestSplitNodesImage(unittest.TestCase):
         )
         new_nodes = split_nodes_images([base_case])
 
-        self.assertEqual(new_nodes[0].text, "This is text with an image !")
+        self.assertEqual(new_nodes[0].text, "This is text with an image ")
         self.assertEqual(new_nodes[0].text_type, TextType.NORMAL.value)
 
         self.assertEqual(new_nodes[1].text, "alt text")
@@ -39,7 +39,7 @@ class TestSplitNodesImage(unittest.TestCase):
 
         new_nodes = split_nodes_images([no_alt_text])
 
-        self.assertEqual(new_nodes[0].text, "This is text with an image !")
+        self.assertEqual(new_nodes[0].text, "This is text with an image ")
         self.assertEqual(new_nodes[0].text_type, TextType.NORMAL.value)
 
         self.assertEqual(new_nodes[1].text, "")

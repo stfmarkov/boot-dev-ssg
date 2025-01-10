@@ -17,12 +17,12 @@ def split_nodes_images(old_nodes):
             if(len(md_image) == 0):
                 continue
             
-            text_before_link = node_text.split(f"[{md_image[0]}]")[0]
+            text_before_link = node_text.split(f"![{md_image[0]}]")[0]
 
             new_nodes.append(TextNode(text_before_link, node.text_type, node.url))
             new_nodes.append(TextNode(md_image[0], TextType.IMAGE.value, md_image[1]))
 
-            node_text = node_text.replace(f"[{md_image[0]}]({md_image[1]})", '')
+            node_text = node_text.replace(f"![{md_image[0]}]({md_image[1]})", '')
             node_text = node_text.replace(f"{text_before_link}", '')
 
         new_nodes.append(TextNode(node_text, node.text_type, node.url))

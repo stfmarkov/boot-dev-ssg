@@ -18,7 +18,7 @@ class TestTextNode(unittest.TestCase):
             TextNode("italic", TextType.ITALIC.value),
             TextNode(" word and a ", TextType.NORMAL.value),
             TextNode("code block", TextType.CODE.value),
-            TextNode(" and an !", TextType.NORMAL.value),
+            TextNode(" and an ", TextType.NORMAL.value),
             TextNode("obi wan image", TextType.IMAGE.value, "https://i.imgur.com/fJRm4Vk.jpeg"),
             TextNode(" and a ", TextType.NORMAL.value),
             TextNode("link", TextType.LINK.value, "https://boot.dev")
@@ -50,7 +50,7 @@ class TestTextNode(unittest.TestCase):
             TextNode("italic", TextType.ITALIC.value),
             TextNode(" word and a ", TextType.NORMAL.value),
             TextNode("code block", TextType.CODE.value),
-            TextNode(" and an !", TextType.NORMAL.value),
+            TextNode(" and an ", TextType.NORMAL.value),
             TextNode("obi wan image", TextType.IMAGE.value, "https://i.imgur.com/fJRm4Vk.jpeg")
         ])
 
@@ -64,7 +64,7 @@ class TestTextNode(unittest.TestCase):
             TextNode("italic", TextType.ITALIC.value),
             TextNode(" word and a ", TextType.NORMAL.value),
             TextNode("link", TextType.LINK.value, "https://boot.dev"),
-            TextNode(" and an !", TextType.NORMAL.value),
+            TextNode(" and an ", TextType.NORMAL.value),
             TextNode("obi wan image", TextType.IMAGE.value, "https://i.imgur.com/fJRm4Vk.jpeg")
         ])
 
