@@ -20,7 +20,7 @@ class TestTextNode(unittest.TestCase):
         italic_leaf = HTMLLeafNode('i', "This is a text node")
         code_leaf = HTMLLeafNode('code', "This is a text node")
         link_leaf = HTMLLeafNode('a', "This is a text node", props={'href': "https://www.example.com"})
-        image_leaf = HTMLLeafNode('img', None, props={'src': "https://www.example.com"})
+        image_leaf = HTMLLeafNode('img', None, props={'src': "https://www.example.com", 'alt': "This is a text node"})
 
         html_normal_leaf_node = text_node_to_html(normal_node)
         html_bold_leaf_node = text_node_to_html(bold_node)

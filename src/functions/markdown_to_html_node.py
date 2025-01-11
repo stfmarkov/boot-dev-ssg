@@ -2,6 +2,8 @@ from src.functions.markdown_to_blocks import markdown_to_blocks
 from src.functions.block_to_block_type import block_to_block_type
 from src.functions.text_to_textnodes import text_to_textnodes
 from src.classes.html_parent_node import HTMLParentNode
+from src.classes.html_leaf_node import HTMLLeafNode
+from src.functions.text_node_to_html import text_node_to_html
 
 def handle_heading(block):
     level = 0
@@ -19,27 +21,45 @@ def markdown_to_html_node(md):
         block_type = block_to_block_type(block)
         if(block_type == 'heading'):
             tag, text = handle_heading(block)
-            block_node = HTMLParentNode(tag, text_to_textnodes(text))
+            children = text_to_textnodes(text)
+            childern_html = [text_node_to_html(child) for child in children]
+            block_node = HTMLParentNode(tag, childern_html)
 
         if(block_type == 'paragraph'):
-            block_node = HTMLParentNode('p', text_to_textnodes(block))
+            children = text_to_textnodes(block)
+
+            print(children)
+
+            childern_html = [text_node_to_html(child) for child in children]
+            block_node = HTMLParentNode('p', childern_html)
 
         if(block_type == 'unordered_list'):
-            block_node = HTMLParentNode('ul', text_to_textnodes(block))
+            children = block.split('\n')
 
+            def to_text_node(child):
+                return HTMLLeafNode('li', child[2:])
+
+            childern_html = list(map(to_text_node, children))
+            block_node = HTMLParentNode('ul', childern_html)
+
+            
         if(block_type == 'ordered_list'):
-            block_node = HTMLParentNode('ol', text_to_textnodes(block))
+            children = block.split('\n')
 
-        if(block_type == 'list_item'):
-            block_node = HTMLParentNode('li', text_to_textnodes(block))
+            def to_text_node(child):
+                return HTMLLeafNode('li', child[3:])
 
-        if(block_type == 'code_block'):
-            block_node = HTMLParentNode('pre', text_to_textnodes(block))
+            childern_html = list(map(to_text_node, children))
+            block_node = HTMLParentNode('ol', childern_html)
 
+        if(block_type == 'code'):
+            block_node = HTMLLeafNode('code', block[3:-3].strip().replace('\n', '').strip())
+            
         if(block_type == 'quote'):
-            block_node = HTMLParentNode('blockquote', text_to_textnodes(block))
+            children = text_to_textnodes(block[1:])
+            childern_html = [text_node_to_html(child) for child in children]
+            block_node = HTMLParentNode('blockquote', childern_html)
 
         block_nodes.append(block_node)
-        
-
-    print(block_nodes)
+    
+    return f"<html>{''.join([node.to_html() for node in block_nodes])}</html>"

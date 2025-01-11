@@ -11,7 +11,7 @@ def text_node_to_html(text_node):
     elif(text_node.text_type == TextType.LINK.value):
         return HTMLLeafNode('a', text_node.text, props={'href': text_node.url})
     elif(text_node.text_type == TextType.IMAGE.value):
-        return HTMLLeafNode('img', None, props={'src': text_node.url})
+        return HTMLLeafNode('img', None, props={'src': text_node.url, 'alt': text_node.text})
     elif(text_node.text_type == TextType.CODE.value):
         return HTMLLeafNode('code', text_node.text)
     else:
