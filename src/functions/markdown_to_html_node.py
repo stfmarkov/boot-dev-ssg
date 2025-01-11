@@ -27,9 +27,6 @@ def markdown_to_html_node(md):
 
         if(block_type == 'paragraph'):
             children = text_to_textnodes(block)
-
-            print(children)
-
             childern_html = [text_node_to_html(child) for child in children]
             block_node = HTMLParentNode('p', childern_html)
 
