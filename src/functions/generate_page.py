@@ -5,6 +5,8 @@ from os import makedirs
 
 def generate_page(from_path, template_path, dest_path):
 
+    print(f"Generating page {dest_path} from {from_path} with template {template_path}")
+
     def create_directory(path):
         if not exists(path):
             makedirs(path)
@@ -15,7 +17,7 @@ def generate_page(from_path, template_path, dest_path):
 
     
     
-    content = open(f"content/{from_path}", 'r').read()
+    content = open(f"{from_path}", 'r').read()
     title = extract_title(content)
 
     template = open(template_path, 'r').read()
@@ -27,8 +29,8 @@ def generate_page(from_path, template_path, dest_path):
 
     directory_structure = '/'.join(dest_path.split('/')[:-1])
     
-    create_directory(f"public/{directory_structure}")
+    create_directory(f"{directory_structure}")
 
-    write_file(f"public/{dest_path}", page_content)
+    write_file(f"{dest_path}", page_content)
 
     
