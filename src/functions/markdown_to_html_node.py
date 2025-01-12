@@ -14,11 +14,11 @@ def handle_heading(block):
 
 def markdown_to_html_node(md):
     blocks = markdown_to_blocks(md)
-
     block_nodes = []
 
     for block in blocks:
         block_type = block_to_block_type(block)
+
         if(block_type == 'heading'):
             tag, text = handle_heading(block)
             children = text_to_textnodes(text)
@@ -34,7 +34,9 @@ def markdown_to_html_node(md):
             children = block.split('\n')
 
             def to_text_node(child):
-                return HTMLLeafNode('li', child[2:])
+                inner_nodes = text_to_textnodes(child[2:])
+                inner_nodes_html = [text_node_to_html(inner_node) for inner_node in inner_nodes]
+                return HTMLParentNode('li', inner_nodes_html)
 
             childern_html = list(map(to_text_node, children))
             block_node = HTMLParentNode('ul', childern_html)
@@ -44,7 +46,9 @@ def markdown_to_html_node(md):
             children = block.split('\n')
 
             def to_text_node(child):
-                return HTMLLeafNode('li', child[3:])
+                inner_nodes = text_to_textnodes(child[3:])
+                inner_nodes_html = [text_node_to_html(inner_node) for inner_node in inner_nodes]
+                return HTMLParentNode('li', inner_nodes_html)
 
             childern_html = list(map(to_text_node, children))
             block_node = HTMLParentNode('ol', childern_html)
@@ -53,7 +57,7 @@ def markdown_to_html_node(md):
             block_node = HTMLLeafNode('code', block[3:-3].strip().replace('\n', '').strip())
             
         if(block_type == 'quote'):
-            children = text_to_textnodes(block[1:])
+            children = text_to_textnodes(block[2:])
             childern_html = [text_node_to_html(child) for child in children]
             block_node = HTMLParentNode('blockquote', childern_html)
 

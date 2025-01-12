@@ -11,9 +11,9 @@ class TestMarkdownToHtmlNode(unittest.TestCase):
 
             This is a paragraph of text. It has some **bold** and *italic* words inside of it.
 
-            * This is the first list item in a list block\n* This is a list item\n* This is another list item\n\n
+            * This is **the first** list item in a list block\n* This is a list item\n* This is another list item\n\n
 
-            1. This is the first list item in a list block\n2. This is a list item\n3. This is another list item\n\n
+            1. This is *the first* list item in a list block\n2. This is a list item\n3. This is another list item\n\n
 
             This is a text with a [link](https://www.example.com)
 
@@ -36,8 +36,8 @@ class TestMarkdownToHtmlNode(unittest.TestCase):
 
         heading = "<h1>This is a heading. It has some <b>bold</b> and <i>italic</i> words inside of it.</h1>"
         paragraph = "<p>This is a paragraph of text. It has some <b>bold</b> and <i>italic</i> words inside of it.</p>"
-        list_item = "<li>This is the first list item in a list block</li>"
-        ordered_list_item = "<li>This is the first list item in a list block</li>"
+        list_item = "<li>This is <b>the first</b> list item in a list block</li>"
+        ordered_list_item = "<li>This is <i>the first</i> list item in a list block</li>"
         ol_tag = "<ol>"
         ul_tag = "<ul>"
         paragraph_with_link = '<p>This is a text with a <a href="https://www.example.com">link</a></p>'
@@ -57,6 +57,8 @@ class TestMarkdownToHtmlNode(unittest.TestCase):
         self.assertTrue(paragraph_with_image in html)
         self.assertTrue(paragraph_with_link_and_image in html)
         self.assertTrue(function_def in html)
+        self.assertTrue(function_return in html)
+        self.assertTrue(quote_block in html)
 
 
 

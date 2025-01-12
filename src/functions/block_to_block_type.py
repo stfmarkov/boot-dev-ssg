@@ -17,7 +17,7 @@ def block_to_block_type(block):
     
     def check_unordered_list(block):
         for line in block.split('\n'):
-            if not line.startswith('*'):
+            if not line.startswith('* '):
                 return False
         return True
     

@@ -17,6 +17,7 @@ class TestTextNode(unittest.TestCase):
         not_code = "```This is not code"
         not_quote = "> This is not a quote\nThis is a quote"
         not_unordered_list = "* This is a list item\nThis is not a list item"
+        not_unordered_list_either = "*This is a list item"
         not_ordered_list = "1. This is a list item \n3. This is not another list item"
 
         self.assertEqual(block_to_block_type(heading), 'heading')
@@ -30,6 +31,7 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(block_to_block_type(not_code), 'paragraph')
         self.assertEqual(block_to_block_type(not_quote), 'paragraph')
         self.assertEqual(block_to_block_type(not_unordered_list), 'paragraph')
+        self.assertEqual(block_to_block_type(not_unordered_list_either), 'paragraph')
         self.assertEqual(block_to_block_type(not_ordered_list), 'paragraph')
 
 
